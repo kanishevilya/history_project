@@ -1,0 +1,169 @@
+{
+  "document_title": "Глава I — судоходная история Санкт-Петербурга (design & implementation guidelines)",
+  "version": "1.0",
+  "stack": {
+    "framework": "Next.js 16 (App Router)",
+    "ui": "React 19, Tailwind CSS v4, Framer Motion, GSAP + ScrollTrigger (@gsap/react useGSAP)",
+    "fonts": "next/font/google: Playfair Display (serif, weights 400–900, cyrillic), PT Serif (sans role in theme — body), Caveat (marginalia)",
+    "images": "next/image, unoptimized: true in next.config for static assets"
+  },
+  "design_language": {
+    "era": "Архив / пергамент / «музейная» вёрстка XVIII века",
+    "mood": "Спокойная академическая подача, золото и сепия как акценты, тёмно-синий (navy) для drop cap и заголовков",
+    "texture": "Класс paper-texture: базовый цвет #FAF8F3 + SVG noise (feTurbulence) повтором по плоскости"
+  },
+  "css_tokens": {
+    "source": "app/globals.css :root",
+    "palette": {
+      "--parchment": "#FAF8F3",
+      "--parchment-dark": "#F0EDE4",
+      "--ink": "#2C3E50",
+      "--ink-light": "#5A6C7D",
+      "--sepia": "#8B7355",
+      "--gold": "#B8860B",
+      "--navy": "#1B365D",
+      "--border": "#D4CFC0",
+      "--card": "#FDFBF7"
+    },
+    "semantic_mapping": "background= parchment, foreground= ink, primary= navy, accent= gold, muted= parchment-dark / ink-light"
+  },
+  "typography": {
+    "body": "PT Serif через theme font-sans (17px, line-height 1.7)",
+    "headings": "Playfair Display через font-serif, жирные заголовки глав и секций",
+    "drop_cap": "Классы .drop-cap (navy) и .drop-cap-gold (gold) — первая буква float, Playfair 900",
+    "marginalia": ".marginalia-handwritten — Caveat, сепия, лёгкий наклон, боковая пометка у каналов"
+  },
+  "layout": {
+    "main_wrapper": "main.paper-texture min-h-screen",
+    "content_width": "Секции: max-w-3xl (ввод, вывод), max-w-6xl (основные блоки), px-6, вертикальные отступы py-12 / py-16",
+    "grid_patterns": "Сетки lg:grid-cols-12 для каналов, верфей, гранита, флота"
+  },
+  "hero_first_sector": {
+    "intent": "Полноэкранный первый сектор без рамки у картинки: фоновая гравюра на всю ширину, текст главы по центру, снизу градиент в пергамент",
+    "structure": "EraSection#chapter-top, min-h 100dvh, overflow hidden, bg #FAF8F3",
+    "layers_z": "0: motion scale на Image fill object-cover; 1: градиентный overlay linear-gradient to bottom в rgba parchment и #faf8f3; 10: колонка с текстом и подсказка скролла",
+    "parallax": "useScroll target=heroRef, useTransform: scale 1→1.08, opacity текста 1→0 по scrollYProgress 0–0.5",
+    "text_readability": "Класс .text-over-image на строках заголовка (text-shadow)",
+    "no_museum_caption": "Подпись к иллюстрации для героя не используется — только фон",
+    "accessibility": "Фоновый слой aria-hidden, alt у декоративного изображения пустой; смысл — из видимых заголовков"
+  },
+  "chapter_reading_chrome": {
+    "file": "components/chapter/ChapterReadingChrome.tsx",
+    "ChapterReadingProvider": "React context: activeDecade number | null",
+    "DecadeTimelineBar": "sticky top-0 z-40, полупрозрачный пергамент + blur, кнопки «Все эпохи» + 1700-е…1790-е; при выборе — scrollIntoView к первому блоку из TIMELINE_SCROLL_ORDER с пересечением SECTION_ERA",
+    "EraSection": "forwardRef section; при activeDecade — если диапазон секции не пересекается с декадой: opacity ~0.32, saturate снижена, pointer-events none; transition opacity/filter 500ms",
+    "BackToTopButton": "fixed bottom-6 right-5 z-50, появляется после scrollY > 380, scroll к #chapter-top",
+    "FigureCaption": "Музейная подпись: inventory mono uppercase, period caps, italic line; данные из MUSEUM_FIGURES",
+    "GlossaryTerm": "Пунктирное подчёркивание; карточка через createPortal в document.body, position fixed, z-index 10000, координаты от getBoundingClientRect; задержка закрытия 220ms при уходе курсора для перехода на карточку; scroll/resize слушатели пока open"
+  },
+  "historical_tooltip": {
+    "file": "app/page.tsx (локальный компонент HistoricalTooltip)",
+    "behavior": "Аналогично глоссарию: portal + fixed + z 10000, задержка закрытия, стрелка на карточке, класс golden-underline на триггере"
+  },
+  "golden_underline": {
+    "class": ".golden-underline в globals — dotted gold border-bottom, hover solid + лёгкий gold wash"
+  },
+  "tooltip_card": {
+    "class": ".tooltip-card — светлый фон, blur, тонкая sepia border, внутренняя белая кайма тенью"
+  },
+  "image_frames": {
+    "image_frame": "Двойная рамка-inset, градиентный фон подложки, лёгкий sepia filter на img, тень",
+    "image_frame_corners": "Углы L-образные золотом + дополнительные короткие штрихи на противоположных углах через многослойный background, тень, filter на img",
+    "comparison_slider": "globals .comparison-handle — золотая вертикальная линия, круглая ручка ::before/::after"
+  },
+  "image_comparison_before_after": {
+    "file": "app/page.tsx ImageComparison",
+    "layout": "figure > div.image-frame-corners.relative.aspect-[4/3].overflow-hidden",
+    "after_layer": "absolute inset-0 z-0, Image fill object-cover — полное «современное» фото",
+    "before_layer": "absolute inset-y-0 left-0 z-[2] overflow-hidden, width style = position% (5–95); внутри absolute left-0 top-0 h-full relative, width style = (100/position)*100% относительно клипа — Image fill object-cover object-left",
+    "handle_z": "comparison-handle z-30",
+    "labels": "text-box-overlay absolute bottom-4 corners z-20",
+    "interaction": "mousedown/touch + window mouseup/touchend end drag",
+    "caption": "optional FigureCaption figureId compareCanalPlan под блоком + подсказка «Перетащите ползунок»"
+  },
+  "fleet_manifest": {
+    "file": "app/page.tsx FleetManifest",
+    "layout": "grid lg:cols-12: список слева archival-scroll, справа lg:col-span-8 min-h 400",
+    "empty_state": "Пунктирная рамка, текст «Выберите тип судна»",
+    "selected_state": "image-frame-corners overflow-hidden; внутри relative aspect-[16/10] max-h min(52vh,520px), Image fill object-contain object-center — чертёж целиком в рамке без вылезания; text-box-overlay снизу с отступами; FigureCaption снизу снаружи рамки",
+    "glossary_in_list": "Названия типов судов обёрнуты в GlossaryTerm (lineShip, frigate, galley)"
+  },
+  "granite_transformation": {
+    "file": "app/page.tsx GraniteTransformation + GSAP ScrollTrigger scrub",
+    "effect": "Два fill Image, верхний слой clip-path inset от progress; подписи периодов в text-box-overlay",
+    "cleanup": "trigger.kill() в return useGSAP"
+  },
+  "canals_section": {
+    "marginalia_sticky": "aside sticky top-32 lg:top-36 чтобы не уходить под DecadeTimelineBar",
+    "glossary_in_copy": "venice, generalPlan, melioration, linii в тексте",
+    "trezzini_peter_catherine": "HistoricalTooltip"
+  },
+  "shipyards": {
+    "IndustrialLocation": "Текст + image-frame-corners + FigureCaption по figureId admiralty | kronstadt",
+    "intro_split": "Балтийский флот обёрнут в GlossaryTerm balticFleet через split строки"
+  },
+  "granite_intro": {
+    "glossary": "Слово набережные через split + GlossaryTerm embankment"
+  },
+  "conclusion": {
+    "anchor_decoration": "Класс .anchor-decoration::after SVG якорь"
+  },
+  "dividers": {
+    "chapter_rule": "Под заголовком героя — золотой градиент + ромбы по краям",
+    "ledger_divider": "Между вводом и каналами — узкая сепия-линия"
+  },
+  "ornament": {
+    "component": "Ornament — SVG линия с кругом, text-accent"
+  },
+  "animations": {
+    "cinematic_ease": "Кубик Безье [0.43, 0.13, 0.23, 0.96] для большинства motion",
+    "whileInView": "opacity + translateY на секциях, once: true, margin -50px на некоторых карточках"
+  },
+  "constants": {
+    "chapter1": "constants/chapter1.ts — весь контент главы (мета, персоны, тексты, изображения пути /assets/ch1/...)",
+    "chapterReading": "constants/chapterReading.ts — CHAPTER_DECADES, SECTION_ERA, decadeOverlapsSection, GLOSSARY, MUSEUM_FIGURES, TIMELINE_SCROLL_ORDER"
+  },
+  "globals_misc": {
+    "scrollbar": "webkit стили под пергамент и gold/sepia",
+    "text_over_image": "text-shadow для читаемости на фото",
+    "figure_caption_museum_and_glossary_focus": "Низ globals — focus ring для glossary-term"
+  },
+  "bugs_addressed_in_latest_pass": {
+    "image_comparison_before": "Раньше у before Image были неверные width/height в px — не fill; исправлено на клип + внутренний масштаб (100/position)% ширины и fill object-cover object-left",
+    "tooltips_under_text": "Секции с opacity создавали stacking context; абсолютные тултипы оказывались под соседним текстом. Решение: createPortal в body + position fixed + z-index 10000 + обновление позиции на scroll/resize + задержка закрытия для наведения на карточку",
+    "fleet_image_overflow": "w-full h-auto без ограничения ломало рамку; заменено на aspect box + fill object-contain"
+  },
+  "file_map": {
+    "page": "app/page.tsx — вся страница главы, все секции, ImageComparison, FleetManifest, GraniteTransformation, HistoricalTooltip, Ornament, импорт ChapterReadingChrome",
+    "globals": "app/globals.css — токены, paper-texture, типографика, рамки, слайдер, тултипы, декор",
+    "layout": "app/layout.tsx — шрифты, metadata, Analytics prod",
+    "chapter_reading_component": "components/chapter/ChapterReadingChrome.tsx",
+    "content": ["constants/chapter1.ts", "constants/chapterReading.ts"],
+    "public_assets": "public/assets/ch1/*.jpg (глава II временно ссылается на те же пути — см. constants/chapter2.ts)"
+  },
+  "chapter_2_industrial": {
+    "route": "/chapter-2",
+    "files": [
+      "app/chapter-2/page.tsx",
+      "app/chapter-2/layout.tsx",
+      "app/chapter-2/industrial.css",
+      "components/chapter2/ChapterTwoView.tsx",
+      "components/chapter2/industrialOverlays.tsx",
+      "components/chapter2/ElizavetaSchematic.tsx",
+      "components/chapter2/MariinskyMapBlock.tsx",
+      "components/chapter2/PutilovCanalBlock.tsx",
+      "constants/chapter2.ts",
+      "constants/chapter2Reading.ts"
+    ],
+    "palette": {
+      "deep_navy": "#1B262C",
+      "rust_text": "#B4A597",
+      "steel_blue": "#0F4C75",
+      "steam_white": "#BBE1FA",
+      "smoky_narrative": "#E8EAE3"
+    },
+    "frames": "Классы .ch2-photo-frame и .ch2-photo-frame--torn — тонкие границы, жёсткая offset-тень, без пергаментных углов главы I",
+    "tooltips": "IndustrialFigureTooltip и IndustrialGlossaryTerm — тот же портал + fixed z-10000, стили под slate/blueprint",
+    "interactions": "Hero 70vh градиент и дым (blur motion); Berd blueprint grid on hover; Elizaveta hotspots + выноски; Mariinsky map scale + красный polyline dash + круг; Putilov mud overlay ScrollTrigger scrub; смерть — чёрный блок цитаты"
+  }
+}

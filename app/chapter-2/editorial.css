@@ -1,0 +1,149 @@
+/* === Chapter II — синяя редакционная палитра === */
+
+.ch2-root {
+  --ch2-parchment: #dce8f5;
+  --ch2-paper-light: #edf3fb;
+  --ch2-ink: #1a3352;
+  --ch2-body: #3d5f82;
+  --ch2-muted: #5a7fa8;
+  --ch2-accent: #1a73e8;
+  --ch2-accent-bright: #3d8ef0;
+  --ch2-border: #9cb8d8;
+  --ch2-line: #c5d8ec;
+  --ch2-card: rgba(237, 245, 252, 0.85);
+  --ch2-shadow: rgba(26, 51, 82, 0.12);
+
+  /* Переопределение глобальных токенов внутри главы II */
+  --background: var(--ch2-parchment);
+  --foreground: var(--ch2-ink);
+  --card: var(--ch2-paper-light);
+  --card-foreground: var(--ch2-ink);
+  --secondary: #e2ecf8;
+  --secondary-foreground: var(--ch2-ink);
+  --muted: #e2ecf8;
+  --muted-foreground: var(--ch2-muted);
+  --accent: var(--ch2-accent);
+  --accent-foreground: #f0f7ff;
+  --border: var(--ch2-border);
+  --ring: var(--ch2-accent-bright);
+  --gold: var(--ch2-accent-bright);
+  --sepia: var(--ch2-muted);
+}
+
+.ch2-paper-texture {
+  background-color: var(--ch2-parchment);
+  background-image:
+    linear-gradient(
+      165deg,
+      rgba(61, 142, 240, 0.00) 0%, /* Сделали синий оттенок сверху насыщеннее */
+      transparent 50%,
+      rgba(26, 115, 232, 0.05) 100%   /* И снизу */
+    ),
+    /* Изменено: opacity в самом конце SVG строки изменен с 0.04 на 0.12 */
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.22'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  color: var(--ch2-ink);
+}
+
+.ch2-link {
+  color: var(--ch2-muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ch2-border);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.ch2-link:hover {
+  color: var(--ch2-accent);
+  border-color: var(--ch2-accent-bright);
+}
+
+.ch2-route-card {
+  border: 1px solid var(--ch2-border);
+  background: var(--ch2-card);
+  padding: 1.25rem;
+}
+
+/* Рамки иллюстраций — без золота/бежа */
+.ch2-root .image-frame-corners {
+  background:
+    linear-gradient(to right, var(--ch2-accent-bright), var(--ch2-accent-bright)),
+    linear-gradient(to bottom, var(--ch2-accent-bright), var(--ch2-accent-bright)),
+    linear-gradient(to right, var(--ch2-accent-bright), var(--ch2-accent-bright)),
+    linear-gradient(to bottom, var(--ch2-accent-bright), var(--ch2-accent-bright)),
+    linear-gradient(155deg, #d4e4f4 0%, #f0f6fc 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.55) inset,
+    0 12px 32px var(--ch2-shadow);
+}
+
+.ch2-root .image-frame-corners::before,
+.ch2-root .image-frame-corners::after {
+  border-color: var(--ch2-accent);
+  opacity: 0.65;
+}
+
+.ch2-root .image-frame {
+  background: linear-gradient(145deg, #d4e4f4 0%, #eef4fb 55%, #f5f9fd 100%);
+}
+
+.ch2-root .image-frame::before {
+  border-color: rgba(61, 142, 240, 0.45);
+}
+
+.ch2-root .image-frame::after {
+  border-color: rgba(26, 115, 232, 0.28);
+}
+
+.ch2-root .image-frame-corners img,
+.ch2-root .image-frame img {
+  filter: contrast(1.04) saturate(0.94);
+}
+
+.ch2-root .drop-cap::first-letter {
+  color: var(--ch2-accent);
+}
+
+.ch2-root .anchor-decoration::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 30' fill='none' stroke='%231a73e8' stroke-width='1.5'%3E%3Cpath d='M12 4a3 3 0 100 6 3 3 0 000-6zM12 10v16M6 20c0-4 2.5-6 6-6s6 2 6 6M3 26h18'/%3E%3C/svg%3E");
+}
+
+.ch2-divider-chip {
+  background-color: var(--ch2-parchment);
+}
+
+/* Порталы вне .ch2-root — явные цвета */
+.ch2-tooltip-panel {
+  border: 1px solid #9cb8d8;
+  background: #edf3fb;
+  box-shadow: 3px 3px 0 rgba(26, 51, 82, 0.12);
+  color: #3d5f82;
+}
+
+.ch2-tooltip-trigger {
+  border-bottom: 1px dotted #1a73e8;
+  color: #1a73e8;
+}
+
+.ch2-tooltip-meta {
+  color: #3d8ef0;
+}
+
+.ch2-tooltip-label {
+  color: #5a7fa8;
+}
+
+.ch2-tooltip-title {
+  color: #1a3352;
+}
+
+.ch2-back-to-top {
+  border-color: var(--ch2-border);
+  background: var(--ch2-paper-light);
+  color: var(--ch2-accent);
+}
+
+.ch2-back-to-top:hover {
+  border-color: var(--ch2-accent-bright);
+  background: var(--ch2-parchment);
+  color: var(--ch2-accent-bright);
+}

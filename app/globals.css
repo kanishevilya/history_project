@@ -1,0 +1,527 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --parchment: #FAF8F3;
+  --parchment-dark: #F0EDE4;
+  --ink: #2C3E50;
+  --ink-light: #5A6C7D;
+  --sepia: #8B7355;
+  --gold: #B8860B;
+  --navy: #1B365D;
+
+  --background: var(--parchment);
+  --foreground: var(--ink);
+  --card: #FDFBF7;
+  --card-foreground: var(--ink);
+  --popover: #FDFBF7;
+  --popover-foreground: var(--ink);
+  --primary: var(--navy);
+  --primary-foreground: var(--parchment);
+  --secondary: var(--parchment-dark);
+  --secondary-foreground: var(--ink);
+  --muted: var(--parchment-dark);
+  --muted-foreground: var(--ink-light);
+  --accent: var(--gold);
+  --accent-foreground: var(--parchment);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: #D4CFC0;
+  --input: var(--parchment-dark);
+  --ring: var(--gold);
+  --chart-1: var(--navy);
+  --chart-2: var(--gold);
+  --chart-3: var(--ink);
+  --chart-4: var(--sepia);
+  --chart-5: #6B8E8C;
+  --radius: 0.5rem;
+  --sidebar: #FDFBF7;
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--navy);
+  --sidebar-primary-foreground: var(--parchment);
+  --sidebar-accent: var(--parchment-dark);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: #D4CFC0;
+  --sidebar-ring: var(--gold);
+}
+
+@theme inline {
+  --font-sans: 'PT Serif', 'Georgia', serif;
+  --font-serif: 'Playfair Display', 'Georgia', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+}
+
+/* ========================================
+   PAPER TEXTURE FOUNDATION
+   ======================================== */
+
+.paper-texture {
+  background-color: #FAF8F3;
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* Тонкая линия-разделитель в духе книжной вёрстки */
+.chapter-rule {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(184, 134, 11, 0.55), transparent);
+}
+
+.chapter-rule::before,
+.chapter-rule::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border: 1px solid rgba(139, 115, 85, 0.35);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.chapter-rule::before {
+  left: 0;
+}
+
+.chapter-rule::after {
+  right: 0;
+}
+
+/* Лёгкий раздел между крупными блоками */
+.ledger-divider {
+  height: 1px;
+  width: 100%;
+  max-width: 12rem;
+  margin-left: auto;
+  margin-right: auto;
+  background: linear-gradient(to right, transparent, rgba(139, 115, 85, 0.35), transparent);
+}
+
+/* ========================================
+   TYPOGRAPHY - DROP CAPS
+   ======================================== */
+
+.drop-cap::first-letter {
+  float: left;
+  font-family: 'Playfair Display', serif;
+  font-size: 4.2em;
+  font-weight: 900;
+  line-height: 0.82;
+  margin-right: 0.08em;
+  margin-top: 0.02em;
+  color: var(--navy);
+}
+
+.drop-cap-gold::first-letter {
+  float: left;
+  font-family: 'Playfair Display', serif;
+  font-size: 4.2em;
+  font-weight: 900;
+  line-height: 0.82;
+  margin-right: 0.08em;
+  margin-top: 0.02em;
+  color: var(--gold);
+}
+
+/* ========================================
+   MARGINALIA (SIDE NOTES)
+   ======================================== */
+
+.marginalia {
+  font-family: 'PT Serif', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--ink-light);
+  line-height: 1.5;
+}
+
+.marginalia-handwritten {
+  font-family: 'Caveat', cursive, 'PT Serif', serif;
+  font-size: 1.1rem;
+  color: var(--sepia);
+  line-height: 1.4;
+}
+
+/* ========================================
+   TOOLTIP / POPOVER STYLE
+   ======================================== */
+
+.tooltip-card {
+  background: rgba(253, 251, 247, 0.98);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(139, 115, 85, 0.2);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+}
+
+/* ========================================
+   INTERACTIVE HIGHLIGHTS
+   ======================================== */
+
+.golden-underline {
+  text-decoration: none;
+  border-bottom: 2px dotted var(--gold);
+  cursor: help;
+  transition: all 0.3s ease;
+}
+
+.golden-underline:hover {
+  border-bottom-style: solid;
+  background: rgba(184, 134, 11, 0.08);
+}
+
+/* ========================================
+   ARCHIVAL SCROLL COMPONENT
+   ======================================== */
+
+.archival-scroll {
+  background: linear-gradient(to right,
+      rgba(139, 115, 85, 0.05) 0%,
+      transparent 3%,
+      transparent 97%,
+      rgba(139, 115, 85, 0.05) 100%);
+  border-left: 3px solid var(--sepia);
+  position: relative;
+}
+
+.archival-scroll::before {
+  content: '';
+  position: absolute;
+  left: -3px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom,
+      var(--gold) 0%,
+      var(--sepia) 50%,
+      var(--gold) 100%);
+}
+
+/* ========================================
+   DOCUMENT INSERT STYLE
+   ======================================== */
+
+.document-insert {
+  background: rgba(253, 251, 247, 0.95);
+  border: 1px solid rgba(139, 115, 85, 0.2);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* ========================================
+   IMAGE FRAME - ORNATE BORDER
+   ======================================== */
+
+.image-frame {
+  position: relative;
+  padding: 14px 16px 16px;
+  background: linear-gradient(145deg, #e4dfd2 0%, #f7f4ec 55%, #faf8f3 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.55) inset,
+    0 10px 28px rgba(27, 54, 93, 0.06);
+}
+
+.image-frame::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 2px solid rgba(139, 115, 85, 0.38);
+  pointer-events: none;
+}
+
+.image-frame::after {
+  content: '';
+  position: absolute;
+  inset: 9px;
+  border: 1px solid rgba(184, 134, 11, 0.22);
+  pointer-events: none;
+}
+
+.image-frame img {
+  filter: sepia(11%) contrast(1.04) saturate(0.95);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Corner decorations for image frames */
+.image-frame-corners {
+  position: relative;
+  padding: 18px 20px 20px;
+  background:
+    linear-gradient(to right, var(--gold), var(--gold)),
+    linear-gradient(to bottom, var(--gold), var(--gold)),
+    linear-gradient(to right, var(--gold), var(--gold)),
+    linear-gradient(to bottom, var(--gold), var(--gold)),
+    linear-gradient(155deg, #ebe6dc 0%, #f9f7f2 100%);
+  background-size:
+    14px 2px,
+    2px 14px,
+    14px 2px,
+    2px 14px,
+    100% 100%;
+  background-position:
+    top 7px right 7px,
+    top 7px right 7px,
+    bottom 7px left 7px,
+    bottom 7px left 7px,
+    0 0;
+  background-repeat: no-repeat;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.5) inset,
+    0 12px 32px rgba(27, 54, 93, 0.07);
+}
+
+.image-frame-corners::before,
+.image-frame-corners::after {
+  content: '';
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--gold);
+  opacity: 0.55;
+  z-index: 1;
+}
+
+.image-frame-corners::before {
+  top: 7px;
+  left: 7px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.image-frame-corners::after {
+  bottom: 7px;
+  right: 7px;
+  border-left: none;
+  border-top: none;
+}
+
+.image-frame-corners img {
+  filter: sepia(10%) contrast(1.03) saturate(0.96);
+  position: relative;
+  z-index: 0;
+}
+
+/* ========================================
+   DECORATIVE DIVIDERS
+   ======================================== */
+
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px 0;
+}
+
+.ornament-divider::before,
+.ornament-divider::after {
+  content: '';
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: linear-gradient(to var(--dir, right), var(--gold), transparent);
+}
+
+.ornament-divider::after {
+  --dir: left;
+}
+
+/* ========================================
+   TEXT OVER IMAGE BOX
+   ======================================== */
+
+.text-box-overlay {
+  background: rgba(250, 248, 243, 0.92);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(139, 115, 85, 0.15);
+  padding: 16px 20px;
+}
+
+/* ========================================
+   COMPARISON SLIDER
+   ======================================== */
+
+.comparison-container {
+  position: relative;
+  overflow: hidden;
+  cursor: ew-resize;
+}
+
+.comparison-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--gold);
+  cursor: ew-resize;
+  z-index: 20;
+}
+
+.comparison-handle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  background: var(--parchment);
+  border: 3px solid var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.comparison-handle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23B8860B' stroke-width='2'%3E%3Cpath d='M8 4l-6 8 6 8M16 4l6 8-6 8'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* ========================================
+   CUSTOM SCROLLBAR
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--parchment);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--sepia), var(--gold));
+  border-radius: 5px;
+  border: 2px solid var(--parchment);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* ========================================
+   TEXT SHADOW FOR IMAGES
+   ======================================== */
+
+.text-over-image {
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.4),
+    0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================
+   SECTION DECORATIONS
+   ======================================== */
+
+.section-ornament {
+  position: relative;
+}
+
+.section-ornament::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Cpath d='M30 5 L35 25 L55 30 L35 35 L30 55 L25 35 L5 30 L25 25 Z' fill='none' stroke='%23B8860B' stroke-width='1' opacity='0.4'/%3E%3Ccircle cx='30' cy='30' r='4' fill='%23B8860B' opacity='0.3'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+}
+
+/* ========================================
+   ANCHOR DECORATION
+   ======================================== */
+
+.anchor-decoration {
+  position: relative;
+}
+
+.anchor-decoration::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 30px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 30' fill='none' stroke='%238B7355' stroke-width='1.5'%3E%3Cpath d='M12 4a3 3 0 100 6 3 3 0 000-6zM12 10v16M6 20c0-4 2.5-6 6-6s6 2 6 6M3 26h18'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.4;
+}
+
+/* ========================================
+   CHAPTER READING — глоссарий и подписи к иллюстрациям
+   ======================================== */
+
+.figure-caption-museum {
+  text-align: left;
+}
+
+.glossary-term:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+  border-radius: 2px;
+}

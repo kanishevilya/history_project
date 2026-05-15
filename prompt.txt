@@ -1,0 +1,14 @@
+Ты — разработчик фронтенда. Воспроизведи одностраничную главу «Судоходная история Санкт-Петербурга — Глава I» (XVIII век) в Next.js App Router, строго следуя файлу design_guidelines.json в этом же репозитории (читай его целиком как единственный источник правды по визуалу, токенам, поведению и структуре файлов).
+
+ОБЯЗАТЕЛЬНО:
+1) Стек: Next.js 16+, React 19, Tailwind v4, Framer Motion, GSAP + ScrollTrigger, next/font (Playfair Display, PT Serif, Caveat), next/image.
+2) Создай app/globals.css с :root токенами и всеми классами из design_guidelines (paper-texture, drop-cap, golden-underline, tooltip-card, image-frame, image-frame-corners, comparison-handle, text-box-overlay, archival-scroll, marginalia-handwritten, chapter-rule, ledger-divider, anchor-decoration, text-over-image, scrollbar, figure-caption-museum, glossary-term:focus-visible).
+3) Создай app/layout.tsx с подключением шрифтов и metadata на русском (см. guidelines).
+4) Вынеси тексты в constants/chapter1.ts и служебные данные таймлайна/глоссария/подписей в constants/chapterReading.ts — структура ключей как в guidelines (SECTION_ERA, GLOSSARY, MUSEUM_FIGURES, TIMELINE_SCROLL_ORDER, CHAPTER_DECADES).
+5) Создай components/chapter/ChapterReadingChrome.tsx: Provider контекста декады, DecadeTimelineBar, BackToTopButton, EraSection (forwardRef), FigureCaption, GlossaryTerm с createPortal(document.body), fixed, z-index 10000, координаты через getBoundingClientRect, задержка закрытия ~220 ms, обновление позиции при scroll/resize пока открыто.
+6) Создай app/page.tsx 'use client': зарегистрируй ScrollTrigger; HistoricalTooltip — тот же паттерн портала что GlossaryTerm; ImageComparison — слой after fill на весь блок; слой before в клипе width=position%, внутри div шириной (100/position)*100% и Image fill object-cover object-left; ручка и подписи с z-index как в guidelines; FleetManifest — список слева, справа пустое состояние или выбранный корабль в image-frame-corners + внутренний aspect-[16/10] max-h min(52vh,520px) + Image fill object-contain; GraniteTransformation — useGSAP + ScrollTrigger с kill при размонтировании; все секции обёрнуты в ChapterReadingProvider и EraSection с id якорей из guidelines; герой — полноэкранный фон без рамки, градиент снизу в #faf8f3, текст по центру, useScroll/useTransform на масштаб фона и прозрачность текста.
+7) Положи изображения в public/assets/ch1/ с именами из chapter1 (или обнови пути в константах).
+8) next.config: images.unoptimized true если нужно для локальных jpg без оптимизатора.
+
+
+Если что-то не указано в design_guidelines.json — не выдумывай новую эстетику; минимально дострой только технически необходимое.

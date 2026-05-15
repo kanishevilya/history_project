@@ -1,0 +1,135 @@
+/* === Chapter III — конструктивизм, газета, кумач === */
+
+.ch3-root {
+  --ch3-paper: #ebe9e4;
+  --ch3-ink: #262626;
+  --ch3-black: #141414;
+  --ch3-red: #b71c1c;
+  --ch3-red-muted: #8f1818;
+  --ch3-border: #262626;
+  --ch3-mono: var(--font-jetbrains-mono, ui-monospace, monospace);
+  --ch3-display: var(--font-oswald, "Oswald", sans-serif);
+
+  --background: var(--ch3-paper);
+  --foreground: var(--ch3-ink);
+  --accent: var(--ch3-red);
+  --accent-foreground: #f5f0ee;
+  --border: #3a3a3a;
+}
+
+.ch3-paper {
+  background-color: var(--ch3-paper);
+  background-image:
+    linear-gradient(90deg, rgba(38, 38, 38, 0.02) 1px, transparent 1px),
+    linear-gradient(rgba(38, 38, 38, 0.02) 1px, transparent 1px),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  background-size: 24px 24px, 24px 24px, 200px 200px;
+  color: var(--ch3-ink);
+}
+
+.ch3-war {
+  background-color: var(--ch3-black);
+  color: #e8e6e1;
+}
+
+.ch3-display {
+  font-family: var(--ch3-display);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+
+.ch3-mono {
+  font-family: var(--ch3-mono);
+}
+
+.ch3-red {
+  color: var(--ch3-red);
+}
+
+.ch3-rule-thick {
+  height: 3px;
+  background: var(--ch3-border);
+}
+
+.ch3-rule-red {
+  height: 3px;
+  background: var(--ch3-red);
+}
+
+.ch3-archive-doc {
+  box-shadow: 8px 12px 0 rgba(20, 20, 20, 0.35);
+  transform: rotate(-2.5deg);
+  border: 1px solid #4a4a4a;
+}
+
+.ch3-stamp {
+  border: 3px solid var(--ch3-red);
+  color: var(--ch3-red);
+  font-family: var(--ch3-display);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.ch3-bulletin-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: var(--ch3-mono);
+  font-size: 0.8rem;
+}
+
+.ch3-bulletin-table th,
+.ch3-bulletin-table td {
+  border: 2px solid var(--ch3-border);
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.ch3-bulletin-table th {
+  background: var(--ch3-ink);
+  color: var(--ch3-paper);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.65rem;
+}
+
+.ch3-manifest-num {
+  font-family: var(--ch3-display);
+  font-size: clamp(3rem, 10vw, 5.5rem);
+  line-height: 0.85;
+  color: var(--ch3-red);
+}
+
+.ch3-memory-wall {
+  background: var(--ch3-black);
+  color: #c9c4bc;
+}
+
+.ch3-memory-value {
+  font-family: var(--ch3-display);
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  color: var(--ch3-red-muted);
+  line-height: 1;
+}
+
+.ch3-link {
+  color: var(--ch3-ink);
+  border-bottom: 2px solid var(--ch3-red);
+  text-decoration: none;
+  font-family: var(--ch3-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.ch3-link:hover {
+  color: var(--ch3-red);
+}
+
+.ch3-ice-crack {
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cpath d='M0 200 L120 80 L200 200 L280 120 L400 200 M80 0 L200 120 L320 40 M40 400 L200 280 L360 400' stroke='%23ffffff' stroke-width='1.5' fill='none' opacity='0.35'/%3E%3C/svg%3E");
+  background-size: cover;
+  mix-blend-mode: overlay;
+}
