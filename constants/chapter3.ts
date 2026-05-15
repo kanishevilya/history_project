@@ -2,13 +2,13 @@
 // Изображения: замените на public/assets/ch3/ при готовности.
 
 export const CH3_IMAGES = {
-  hero: "/assets/ch1/ch1_merchant_fleet.jpg",
-  decree: "/assets/ch1/ch1_trezzini_plan.jpg",
-  vasiliev: "/assets/ch1/ch1_kronstadt.jpg",
-  roadMap: "/assets/ch1/ch1_trezzini_plan.jpg",
-  ladogaFleet: "/assets/ch1/ch1_ship_moskva.jpg",
-  iceRoad: "/assets/ch1/ch1_admiralty.jpg",
-  pipeline: "/assets/ch1/ch1_winter_canal.jpg",
+  hero: "/assets/ch3/ladoga_fleet.jpg",
+  decree: "/assets/ch3/decree.jpg",
+  vasiliev: "/assets/ch3/vasiliev.jpg",
+  roadMap: "/assets/ch3/road_map.jpg",
+  ladogaFleet: "/assets/ch3/ladoga_fleet.jpg",
+  iceRoad: "/assets/ch3/ice_road.jpg",
+  pipeline: "/assets/ch3/pipeline.jpg",
 } as const;
 
 export const CHAPTER3_META = {
@@ -150,5 +150,11 @@ export const CHAPTER3_CONCLUSION = {
     number: "II",
     title: "Девятнадцатое столетие",
     subtitle: "Железо и пар",
+  },
+  nextChapter: {
+    href: "/chapter-4",
+    number: "IV",
+    title: "Вторая половина XX века",
+    subtitle: "Модернизация и перелом",
   },
 };

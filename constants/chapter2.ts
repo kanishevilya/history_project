@@ -2,15 +2,14 @@
 // Временные пути: jpg из ch1 (замените на public/assets/ch2/ при готовности).
 
 export const CH2_IMAGES = {
-  hero: "/assets/ch1/ch1_hero_engraving.jpg",
-  berdWorkshop: "/assets/ch1/ch1_admiralty.jpg",
-  elizavetaSide: "/assets/ch1/ch1_ship_poltava.jpg",
-  elizavetaFortress: "/assets/ch1/ch1_kronstadt.jpg",
-  oranienbaum: "/assets/ch1/ch1_vasilyevsky_modern.jpg",
-  mariinskyPlan: "/assets/ch1/ch1_trezzini_plan.jpg",
-  mariinskyMap: "/assets/ch1/ch1_trezzini_plan.jpg",
-  putilovPortrait: "/assets/ch1/ch1_kronstadt.jpg",
-  gutuevsky: "/assets/ch1/ch1_merchant_fleet.jpg",
+  hero: "/assets/ch2/elizaveta_side.jpg",
+  elizavetaSide: "/assets/ch2/elizaveta_side.jpg",
+  elizavetaFortress: "/assets/ch2/elizaveta_fortress.jpg",
+  oranienbaum: "/assets/ch2/oranienbaum.jpg",
+  mariinskyPlan: "/assets/ch2/mariinsky_plan.jpg",
+  mariinskyMap: "/assets/ch2/mariinsky_map.jpg",
+  putilovPortrait: "/assets/ch2/putilov_portrait.jpg",
+  gutuevsky: "/assets/ch2/gutuevsky.jpg",
 } as const;
 
 export const CHAPTER2_META = {

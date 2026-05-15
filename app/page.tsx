@@ -415,21 +415,21 @@ function GraniteTransformation() {
         src={GRANITE_SECTION.transformation.before.image}
         alt={GRANITE_SECTION.transformation.before.description}
         fill
-        className="object-cover"
+        className="object-cover scale-x-[-1]"
       />
 
       {/* Stone embankment (after) - revealed by clip-path */}
       <motion.div
         className="absolute inset-0"
         style={{
-          clipPath: `inset(0 ${100 - progress * 100}% 0 0)`,
+          clipPath: `inset(0 0 0 ${100 - progress * 100}%)`,
         }}
       >
         <Image
           src={GRANITE_SECTION.transformation.after.image}
           alt={GRANITE_SECTION.transformation.after.description}
           fill
-          className="object-cover"
+          className="object-cover scale-x-[-1]"
         />
       </motion.div>
 
@@ -770,7 +770,7 @@ export default function ChapterOnePage() {
               >
                 <ImageComparison
                   beforeSrc="/assets/ch1/ch1_trezzini_plan.jpg"
-                  afterSrc="/assets/ch1/ch1_vasilyevsky_modern.jpg"
+                  afterSrc="/assets/ch1/ch1_modern.jpg"
                   beforeLabel="План Трезини, 1716"
                   afterLabel="Современный вид"
                   beforeAlt="Генеральный план Трезини"

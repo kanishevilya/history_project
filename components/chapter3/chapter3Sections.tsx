@@ -294,6 +294,7 @@ export function MemoryWallSection() {
 
 export function ConclusionSection() {
   const prev = CHAPTER3_CONCLUSION.prevChapter;
+  const next = CHAPTER3_CONCLUSION.nextChapter;
   return (
     <section className={`${SECTION} border-t border-[#262626]/20`}>
       <div className="mx-auto max-w-3xl text-center">
@@ -308,6 +309,21 @@ export function ConclusionSection() {
             {prev.subtitle}
           </p>
         </Link>
+        {next && (
+          <>
+            <p className="ch3-mono mt-12 text-xs uppercase tracking-widest text-[#6a6560]">
+              Следующая глава
+            </p>
+            <Link href={next.href} className="group mt-3 inline-block">
+              <p className="ch3-display text-2xl transition-colors group-hover:text-[#b71c1c] md:text-3xl">
+                Глава {next.number}: {next.title}
+              </p>
+              <p className="ch3-mono mt-1 text-sm text-[#6a6560] group-hover:text-[#b71c1c]">
+                {next.subtitle}
+              </p>
+            </Link>
+          </>
+        )}
       </div>
     </section>
   );

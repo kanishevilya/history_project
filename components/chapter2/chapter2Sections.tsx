@@ -253,14 +253,6 @@ export function BerdSection() {
             </div>
           </CornerFrame>
         </div>
-        <div className="mt-8">
-          <Chapter2Figure
-            src={CH2_IMAGES.berdWorkshop}
-            alt="Цех литейного завода"
-            caption="Литейный цех на Лисьем Носу"
-            size="feature"
-          />
-        </div>
       </div>
     </section>
   );
@@ -594,7 +586,9 @@ export function ConclusionSection() {
               <p className="font-serif text-2xl font-bold text-foreground transition-colors group-hover:text-accent md:text-3xl">
                 Глава {next.number}: {next.title}
               </p>
-              <p className="mt-1 text-accent italic group-hover:underline">{next.subtitle}</p>
+              <p className="mt-1 text-accent italic group-hover:underline">
+                {next.subtitle}
+              </p>
             </Link>
           </motion.div>
         ) : null}

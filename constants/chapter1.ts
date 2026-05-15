@@ -142,7 +142,7 @@ export const GRANITE_SECTION = {
     after: {
       period: '1760-е–1790-е',
       description: 'Гранитная одежда берегов — триумф инженерной мысли и символ имперского величия.',
-      image: '/assets/ch1/ch1_embankment_stone.jpg',
+      image: '/assets/ch1/ch1_moyka.jpg',
     },
   },
   trade: {

@@ -1,0 +1,399 @@
+/* === Chapter V — Digital Logistics & CAD Blueprints === */
+
+.ch5-root {
+  --ch5-white: #ffffff;
+  --ch5-navy: #0f172a;
+  --ch5-cyan: #00e5ff;
+  --ch5-cyan-dim: rgba(0, 229, 255, 0.15);
+  --ch5-mono: var(--font-jetbrains-mono, ui-monospace, monospace);
+  --ch5-sans: var(--font-ibm-plex-sans, system-ui, sans-serif);
+
+  --background: var(--ch5-white);
+  --foreground: var(--ch5-navy);
+}
+
+.ch5-root *,
+.ch5-root *::before,
+.ch5-root *::after {
+  border-radius: 0 !important;
+}
+
+.ch5-light {
+  background-color: var(--ch5-white);
+  color: var(--ch5-navy);
+}
+
+.ch5-arctic {
+  background-color: var(--ch5-navy);
+  color: #f1f5f9;
+}
+
+.ch5-mono {
+  font-family: var(--ch5-mono);
+}
+
+.ch5-sans {
+  font-family: var(--ch5-sans);
+}
+
+.ch5-meta {
+  font-family: var(--ch5-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  line-height: 1.45;
+}
+
+.ch5-title {
+  font-family: var(--ch5-sans);
+  font-weight: 900;
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--ch5-navy);
+}
+
+.ch5-title-sm {
+  font-family: var(--ch5-sans);
+  font-weight: 800;
+  font-size: clamp(1.2rem, 2.8vw, 1.65rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.ch5-body {
+  font-family: var(--ch5-sans);
+  font-size: 1rem;
+  line-height: 1.85;
+  max-width: 42rem;
+}
+
+.ch5-hero-title {
+  font-family: var(--ch5-sans);
+  font-weight: 900;
+  font-size: clamp(2rem, 5.5vw, 4.25rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.ch5-hero-sub {
+  font-family: var(--ch5-sans);
+  font-weight: 400;
+  font-size: clamp(1.05rem, 2.2vw, 1.6rem);
+  line-height: 1.35;
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+
+/* Gutter */
+.ch5-gutter {
+  position: relative;
+  min-height: 100%;
+}
+
+.ch5-arctic .ch5-gutter {
+  border-right-color: rgba(0, 229, 255, 0.35);
+}
+
+.ch5-gutter-tag {
+  position: sticky;
+  top: 5rem;
+  display: block;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--ch5-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ch5-navy);
+  padding: 0.5rem 0;
+  white-space: nowrap;
+}
+
+.ch5-arctic .ch5-gutter-tag {
+  color: var(--ch5-cyan);
+}
+
+/* CAD spec table */
+.ch5-cad-wrap {
+  border: 1px solid var(--ch5-navy);
+  margin-top: 2rem;
+}
+
+.ch5-cad-head {
+  border-bottom: 2px solid var(--ch5-navy);
+  padding: 0.75rem 1rem;
+}
+
+.ch5-cad-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-family: var(--ch5-mono);
+  font-size: 0.72rem;
+}
+
+.ch5-cad-table thead tr {
+  border-bottom: 1px solid var(--ch5-navy);
+}
+
+.ch5-cad-table th {
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.6rem;
+  background: transparent;
+}
+
+.ch5-cad-table tbody tr {
+  border-bottom: 1px solid rgba(15, 23, 42, 0.25);
+}
+
+.ch5-cad-table td {
+  padding: 0.85rem 0.75rem;
+  vertical-align: top;
+}
+
+.ch5-cad-value {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  color: var(--ch5-navy);
+}
+
+.ch5-cad-unit {
+  opacity: 0.65;
+  margin-left: 0.25rem;
+}
+
+/* Blueprint callouts */
+.ch5-callout-board {
+  position: relative;
+  margin-top: 2.5rem;
+}
+
+.ch5-callout-line {
+  position: absolute;
+  background: var(--ch5-navy);
+  height: 1px;
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+.ch5-callout-tag {
+  font-family: var(--ch5-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ch5-navy);
+  border: 1px solid var(--ch5-navy);
+  padding: 0.5rem 0.75rem;
+  background: var(--ch5-white);
+}
+
+.ch5-callout-sub {
+  display: block;
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  margin-top: 0.25rem;
+  opacity: 0.65;
+}
+
+/* Live tracker */
+.ch5-terminal {
+  border: 1px solid var(--ch5-navy);
+  background: var(--ch5-navy);
+  margin-top: 2.5rem;
+}
+
+.ch5-terminal-inset {
+  padding: 1.5rem 1.25rem;
+  border-top: 1px solid rgba(0, 229, 255, 0.35);
+}
+
+.ch5-teu {
+  font-family: var(--ch5-mono);
+  font-weight: 700;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ch5-cyan);
+  text-shadow: 0 0 24px rgba(0, 229, 255, 0.55);
+  font-variant-numeric: tabular-nums;
+}
+
+.ch5-route {
+  font-family: var(--ch5-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-top: 1.25rem;
+}
+
+.ch5-route span {
+  color: var(--ch5-cyan);
+}
+
+.ch5-route-arrow {
+  color: rgba(0, 229, 255, 0.5);
+  margin: 0 0.35rem;
+}
+
+/* Dispatcher log */
+.ch5-dispatch {
+  border: 1px solid var(--ch5-navy);
+  background: var(--ch5-navy);
+  padding: 1.25rem 1rem;
+}
+
+.ch5-dispatch-value {
+  font-family: var(--ch5-mono);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--ch5-cyan);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 16px rgba(0, 229, 255, 0.45);
+}
+
+.ch5-dispatch-label {
+  font-family: var(--ch5-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-top: 0.35rem;
+}
+
+/* HUD frame */
+.ch5-hud {
+  position: relative;
+  border: 1px solid var(--ch5-navy);
+  background: #000;
+}
+
+.ch5-hud::before,
+.ch5-hud::after,
+.ch5-hud-corner-tl,
+.ch5-hud-corner-tr,
+.ch5-hud-corner-bl,
+.ch5-hud-corner-br {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: var(--ch5-cyan);
+  border-style: solid;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.ch5-hud::before {
+  content: "";
+  top: 10px;
+  left: 10px;
+  border-width: 2px 0 0 2px;
+}
+
+.ch5-hud::after {
+  content: "";
+  top: 10px;
+  right: 10px;
+  border-width: 2px 2px 0 0;
+}
+
+.ch5-hud .ch5-hud-corner-bl {
+  bottom: 10px;
+  left: 10px;
+  border-width: 0 0 2px 2px;
+}
+
+.ch5-hud .ch5-hud-corner-br {
+  bottom: 10px;
+  right: 10px;
+  border-width: 0 2px 2px 0;
+}
+
+.ch5-hud-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  padding: 0.75rem 1rem;
+  background: rgba(15, 23, 42, 0.88);
+  border-top: 1px solid rgba(0, 229, 255, 0.4);
+  font-family: var(--ch5-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ch5-cyan);
+}
+
+/* Arctic horizon grid */
+.ch5-horizon {
+  position: relative;
+  height: 42vh;
+  min-height: 280px;
+  margin-top: 3rem;
+  overflow: hidden;
+  border-top: 1px solid rgba(0, 229, 255, 0.35);
+  perspective: 420px;
+  perspective-origin: 50% 0%;
+}
+
+.ch5-horizon-floor {
+  position: absolute;
+  left: -50%;
+  right: -50%;
+  bottom: -20%;
+  height: 140%;
+  transform: rotateX(72deg);
+  transform-origin: center top;
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.45) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.45) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to top, black 0%, transparent 85%);
+  animation: ch5-grid-drift 12s linear infinite;
+}
+
+.ch5-horizon-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 40% at 50% 100%, rgba(0, 229, 255, 0.25), transparent 70%);
+  pointer-events: none;
+}
+
+@keyframes ch5-grid-drift {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 0 48px, 48px 0;
+  }
+}
+
+.ch5-plate {
+  border: 1px solid var(--ch5-navy);
+}
+
+.ch5-plate--2 {
+  border-width: 2px;
+}
+
+.ch5-grid-bg {
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}

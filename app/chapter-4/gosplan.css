@@ -1,0 +1,543 @@
+/* === Chapter IV — бруталистская редакционная система === */
+
+.ch4-root {
+  --ch4-paper: #eceff1;
+  --ch4-ink: #141414;
+  --ch4-blue: #0284c7;
+  --ch4-dark: #0b0f19;
+  --ch4-grey: #141414;
+  --ch4-orange: #f97316;
+  --ch4-neon: #38bdf8;
+  --ch4-mono: var(--font-jetbrains-mono, ui-monospace, monospace);
+  --ch4-sans: var(--font-ibm-plex-sans, system-ui, sans-serif);
+
+  --background: var(--ch4-paper);
+  --foreground: var(--ch4-ink);
+}
+
+.ch4-root *,
+.ch4-root *::before,
+.ch4-root *::after {
+  border-radius: 0 !important;
+}
+
+.ch4-paper {
+  background-color: var(--ch4-paper);
+  color: var(--ch4-ink);
+}
+
+.ch4-dark-zone {
+  background-color: var(--ch4-dark);
+  color: #e8eaed;
+}
+
+.ch4-inverted {
+  background-color: var(--ch4-grey);
+  color: #ffffff;
+}
+
+/* —— Typography —— */
+
+.ch4-mono {
+  font-family: var(--ch4-mono);
+}
+
+.ch4-sans {
+  font-family: var(--ch4-sans);
+}
+
+.ch4-meta {
+  font-family: var(--ch4-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.ch4-display {
+  font-family: var(--ch4-sans);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+.ch4-title {
+  font-family: var(--ch4-sans);
+  font-weight: 900;
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.ch4-title-sm {
+  font-family: var(--ch4-sans);
+  font-weight: 800;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.ch4-kicker {
+  font-family: var(--ch4-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+.ch4-body {
+  font-family: var(--ch4-sans);
+  font-size: 1rem;
+  line-height: 1.85;
+  font-weight: 400;
+  max-width: 42rem;
+}
+
+.ch4-body--wide {
+  max-width: 48rem;
+}
+
+.ch4-lead {
+  font-family: var(--ch4-sans);
+  font-size: 1.0625rem;
+  line-height: 1.9;
+  font-weight: 400;
+}
+
+.ch4-hero-title {
+  font-family: var(--ch4-sans);
+  font-weight: 900;
+  font-size: clamp(2rem, 5.5vw, 4.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.ch4-hero-sub {
+  font-family: var(--ch4-sans);
+  font-weight: 400;
+  font-size: clamp(1.125rem, 2.5vw, 1.75rem);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+/* —— Gutter —— */
+
+.ch4-gutter {
+  position: relative;
+  min-height: 100%;
+}
+
+.ch4-dark-zone .ch4-gutter {
+  border-right-color: rgba(255, 255, 255, 0.25);
+}
+
+.ch4-gutter-tag {
+  position: sticky;
+  top: 5rem;
+  display: block;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--ch4-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #141414;
+  padding: 0.5rem 0;
+  white-space: nowrap;
+}
+
+.ch4-dark-zone .ch4-gutter-tag {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.ch4-gutter-tag--warn {
+  color: var(--ch4-orange);
+}
+
+.ch4-gutter-tag--neon {
+  color: var(--ch4-neon);
+}
+
+.ch4-timeline {
+  position: absolute;
+  left: 50%;
+  top: 4rem;
+  bottom: 2rem;
+  width: 1px;
+  background: #141414;
+  transform: translateX(-50%);
+}
+
+.ch4-timeline-dot {
+  position: absolute;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: #141414;
+  transform: translate(-50%, -50%);
+}
+
+/* —— Soviet ledger tables —— */
+
+.ch4-ledger-wrap {
+  margin-top: 2.5rem;
+  border-top: 2px solid #000;
+}
+
+.ch4-dark-zone .ch4-ledger-wrap {
+  border-top-color: rgba(255, 255, 255, 0.85);
+}
+
+.ch4-ledger {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-family: var(--ch4-mono);
+  font-size: 0.75rem;
+}
+
+.ch4-ledger thead tr {
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+}
+
+.ch4-dark-zone .ch4-ledger thead tr {
+  border-top-color: rgba(255, 255, 255, 0.85);
+  border-bottom-color: rgba(255, 255, 255, 0.85);
+}
+
+.ch4-ledger th {
+  padding: 0.85rem 0.5rem;
+  text-align: left;
+  vertical-align: bottom;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.65rem;
+  background: transparent;
+}
+
+.ch4-ledger tbody tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.ch4-dark-zone .ch4-ledger tbody tr {
+  border-bottom-color: rgba(255, 255, 255, 0.22);
+}
+
+.ch4-ledger td {
+  padding: 1rem 0.5rem;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.ch4-ledger td:last-child,
+.ch4-ledger th:last-child {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+}
+
+.ch4-ledger .ch4-ledger-num {
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+/* —— Blueprint plates (no cards) —— */
+
+.ch4-plate {
+  border: 1px solid #000;
+  background: transparent;
+}
+
+.ch4-plate--2 {
+  border-width: 2px;
+}
+
+.ch4-plate--blue {
+  border-color: var(--ch4-blue);
+}
+
+.ch4-plate-divider {
+  border-top: 2px solid #000;
+  margin-top: 3rem;
+  padding-top: 3rem;
+}
+
+.ch4-dark-zone .ch4-plate {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.ch4-note {
+  border-left: 4px solid #000;
+  padding: 0.75rem 0 0.75rem 1.25rem;
+  margin-left: 0.5rem;
+  background: transparent;
+}
+
+.ch4-dark-zone .ch4-note {
+  border-left-color: var(--ch4-orange);
+}
+
+.ch4-note--orange {
+  border-left-color: var(--ch4-orange);
+  padding-left: 1.5rem;
+}
+
+/* —— Ship passport —— */
+
+.ch4-passport {
+  border: 2px solid #000;
+  background: var(--ch4-paper);
+}
+
+.ch4-passport img {
+  filter: grayscale(1) contrast(1.2);
+}
+
+.ch4-passport-spec {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid #000;
+}
+
+.ch4-passport-spec dt,
+.ch4-passport-spec dd {
+  font-family: var(--ch4-mono);
+  font-size: 0.6rem;
+  padding: 0.5rem 0.65rem;
+  margin: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.ch4-passport-spec dt {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(20, 20, 20, 0.65);
+  border-right: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.ch4-passport-spec dd {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* —— EGS map —— */
+
+.ch4-coord-grid {
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.35) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.ch4-coord-crosshair::before,
+.ch4-coord-crosshair::after {
+  content: "";
+  position: absolute;
+  background: rgba(56, 189, 248, 0.5);
+}
+
+.ch4-coord-crosshair::before {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-50%);
+}
+
+.ch4-coord-crosshair::after {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  transform: translateY(-50%);
+}
+
+/* —— Vessel dashboard —— */
+
+.ch4-blueprint {
+  border: 2px solid #000;
+  background: #0a0e14;
+}
+
+.ch4-blueprint img {
+  filter: grayscale(1) contrast(1.2);
+}
+
+.ch4-blueprint-active {
+  outline: 2px solid var(--ch4-orange);
+  outline-offset: -2px;
+}
+
+.ch4-toggle {
+  font-family: var(--ch4-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 2px solid #000;
+  padding: 0.65rem 0.85rem;
+  background: var(--ch4-paper);
+  text-align: left;
+  transition: background 0.05s, color 0.05s;
+}
+
+.ch4-toggle--active {
+  background: #000;
+  color: var(--ch4-paper);
+}
+
+/* —— ISO terminal plate —— */
+
+.ch4-iso-plate {
+  border: 2px solid var(--ch4-blue);
+  background: transparent;
+}
+
+.ch4-corrugated {
+  border: 2px solid var(--ch4-blue);
+  position: relative;
+  overflow: hidden;
+  background: #0a1628;
+}
+
+.ch4-corrugated::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 3px,
+    rgba(2, 132, 199, 0.12) 3px,
+    rgba(2, 132, 199, 0.12) 6px
+  );
+  pointer-events: none;
+}
+
+/* —— Matrix ticker (glow only, no shadow boxes) —— */
+
+.ch4-matrix {
+  font-family: var(--ch4-mono);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #4ade80;
+  text-shadow:
+    0 0 12px rgba(56, 189, 248, 0.8),
+    0 0 32px rgba(34, 197, 94, 0.4);
+}
+
+/* —— Crisis fracture —— */
+
+.ch4-crt {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ch4-crt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+  pointer-events: none;
+}
+
+.ch4-shatter {
+  clip-path: polygon(0 0, 98% 2%, 100% 96%, 3% 100%, 0 88%);
+  border-left: 2px solid rgba(249, 115, 22, 0.6);
+  padding: 1.25rem 1rem 1.25rem 1.25rem;
+  background: transparent;
+}
+
+.ch4-shatter-alt {
+  clip-path: polygon(2% 0, 100% 4%, 97% 100%, 0 92%, 4% 12%);
+  border-left: 2px solid rgba(255, 255, 255, 0.15);
+  padding: 1.25rem 1rem 1.25rem 1.25rem;
+  background: transparent;
+}
+
+.ch4-decree-out {
+  border-left: 4px solid var(--ch4-orange);
+  padding: 1rem 0 1rem 1.5rem;
+  margin-left: 0.25rem;
+  background: transparent;
+}
+
+/* —— Portrait (border only) —— */
+
+.ch4-portrait-frame {
+  border: 1px solid var(--ch4-neon);
+  outline: 1px solid rgba(56, 189, 248, 0.35);
+  outline-offset: 4px;
+}
+
+.ch4-ramp-perspective {
+  perspective: 900px;
+}
+
+/* —— Reboot bar —— */
+
+.ch4-reboot-bar {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--ch4-neon) 40%,
+    var(--ch4-orange) 60%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: ch4-reboot-sweep 2.8s linear infinite;
+}
+
+@keyframes ch4-reboot-sweep {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* —— Stat strip (no card) —— */
+
+.ch4-stat-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-top: 2px solid var(--ch4-blue);
+  margin-top: 2rem;
+}
+
+.ch4-stat-strip > div {
+  flex: 1 1 auto;
+  min-width: 8rem;
+  padding: 1rem 1.25rem 1rem 0;
+  border-right: 1px solid rgba(2, 132, 199, 0.4);
+}
+
+.ch4-stat-strip > div:last-child {
+  border-right: none;
+}
+
+.ch4-stat-value {
+  font-family: var(--ch4-mono);
+  font-weight: 700;
+  font-size: 1.125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ch4-blue);
+}
