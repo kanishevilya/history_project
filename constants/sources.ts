@@ -13,18 +13,8 @@ export const SOURCE_SECTIONS = [
     title: "Промышленный переворот и первые пароходы",
     items: [
       {
-        title: "Начало промышленного переворота в России 19 века",
-        url: "https://istoriarusi.ru/imper/promishlenniy-perevorot-v-rossii-19-vek.html",
-        accessDate: "мая 7, 2026",
-      },
-      {
         title: "Елизавета (пароход, 1815) — Материалы свободной энциклопедии",
-        url: "https://ru.wikipedia.org/wiki/%D0%95%D0%BB%D0%B8%D0%B7%D0%B0%D0%B2%D0%B5%D1%82%D0%B0_(%D0%BF%D0%B0%D1%80%D0%BE%D1%85%D0%BE%D0%B4,_1815",
-        accessDate: "мая 7, 2026",
-      },
-      {
-        title: "История создания Мариинской водной системы",
-        url: "https://turism-vytegra.ru/guide/vidy-turizma-v-vytegorskom-rayone/proekt-vytegore-korabelnaya-сторона/mariinskaya-vodnaya-sistema-/",
+        url: "https://ru.wikipedia.org/wiki/Елизавета_(пароход,_1815)",
         accessDate: "мая 7, 2026",
       },
     ],

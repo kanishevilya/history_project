@@ -45,10 +45,16 @@ export function Crisis1914Section() {
         <p className="ch3-mono text-[0.65rem] uppercase tracking-[0.3em] text-[#b71c1c]">
           {CH3_CRISIS_1914.subtitle}
         </p>
-        <h2 className="ch3-display mt-2 text-3xl md:text-5xl">{CH3_CRISIS_1914.title}</h2>
+        <h2 className="ch3-display mt-2 text-3xl md:text-5xl">
+          {CH3_CRISIS_1914.title}
+        </h2>
         <div className="mt-8 space-y-6">
           {CH3_CRISIS_1914.paragraphs.map((p) => (
-            <RevealWords key={p.slice(0, 40)} text={p} className="leading-relaxed" />
+            <RevealWords
+              key={p.slice(0, 40)}
+              text={p}
+              className="leading-relaxed"
+            />
           ))}
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
@@ -61,7 +67,9 @@ export function Crisis1914Section() {
                 {s.value}
                 <span className="ml-2 text-2xl text-[#ebe9e4]">{s.unit}</span>
               </p>
-              <p className="ch3-mono mt-2 text-xs uppercase tracking-widest">{s.label}</p>
+              <p className="ch3-mono mt-2 text-xs uppercase tracking-widest">
+                {s.label}
+              </p>
             </div>
           ))}
         </div>
@@ -139,7 +147,10 @@ export function VasilievSection() {
             <p className="ch3-mono text-[0.65rem] uppercase tracking-[0.2em] text-[#b71c1c]">
               {CH3_VASILIEV.role}
             </p>
-            <RevealWords text={CH3_VASILIEV.bio} className="mt-4 leading-relaxed" />
+            <RevealWords
+              text={CH3_VASILIEV.bio}
+              className="mt-4 leading-relaxed"
+            />
             <div className="ch3-rule-thick mt-10" />
             <h3 className="ch3-display mt-6 text-2xl md:text-3xl">
               {CH3_VASILIEV.manifestTitle}
@@ -170,12 +181,16 @@ export function VasilievSection() {
 
 export function InterwarSection() {
   return (
-    <section className={`${SECTION} border-y-2 border-[#262626] bg-[#141414] text-[#ebe9e4]`}>
+    <section
+      className={`${SECTION} border-y-2 border-[#262626] bg-[#141414] text-[#ebe9e4]`}
+    >
       <div className="mx-auto max-w-3xl text-center">
         <p className="ch3-mono text-[0.65rem] uppercase tracking-[0.25em] text-[#b71c1c]">
           {CH3_INTERWAR.subtitle}
         </p>
-        <h2 className="ch3-display mt-3 text-3xl md:text-4xl">{CH3_INTERWAR.title}</h2>
+        <h2 className="ch3-display mt-3 text-3xl md:text-4xl">
+          {CH3_INTERWAR.title}
+        </h2>
         <RevealWords
           text={CH3_INTERWAR.body}
           className="mt-6 text-left leading-relaxed text-[#d8d6d0] md:text-center md:text-lg"
@@ -192,8 +207,13 @@ export function EvacuationSection() {
         <p className="ch3-mono text-[0.65rem] uppercase tracking-[0.25em] text-[#b71c1c]">
           {CH3_EVACUATION.subtitle}
         </p>
-        <h2 className="ch3-display mt-2 text-3xl md:text-5xl">{CH3_EVACUATION.title}</h2>
-        <RevealWords text={CH3_EVACUATION.intro} className="mt-6 leading-relaxed" />
+        <h2 className="ch3-display mt-2 text-3xl md:text-5xl">
+          {CH3_EVACUATION.title}
+        </h2>
+        <RevealWords
+          text={CH3_EVACUATION.intro}
+          className="mt-6 leading-relaxed"
+        />
         <div className="mt-10 overflow-x-auto">
           <table className="ch3-bulletin-table">
             <thead>
@@ -229,8 +249,13 @@ export function PipelineSection() {
           <p className="ch3-mono text-[0.65rem] uppercase tracking-[0.25em] text-[#b71c1c]">
             {CH3_PIPELINE.subtitle}
           </p>
-          <h2 className="ch3-display mt-2 text-3xl md:text-5xl">{CH3_PIPELINE.title}</h2>
-          <RevealWords text={CH3_PIPELINE.topText} className="mt-6 leading-relaxed" />
+          <h2 className="ch3-display mt-2 text-3xl md:text-5xl">
+            {CH3_PIPELINE.title}
+          </h2>
+          <RevealWords
+            text={CH3_PIPELINE.topText}
+            className="mt-6 leading-relaxed"
+          />
         </div>
       </div>
       <div className="relative flex items-end bg-[#0a0f14] px-6 py-10 md:px-12">
@@ -247,7 +272,9 @@ export function PipelineSection() {
           <p className="ch3-mono text-[0.65rem] uppercase tracking-widest text-[#b71c1c]">
             Глубина · Ладога
           </p>
-          <p className="ch3-mono mt-2 text-sm text-[#ebe9e4]">{CH3_PIPELINE.imageCaption}</p>
+          <p className="ch3-mono mt-2 text-sm text-[#ebe9e4]">
+            {CH3_PIPELINE.imageCaption}
+          </p>
         </div>
       </div>
     </section>
