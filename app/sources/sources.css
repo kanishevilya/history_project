@@ -1,0 +1,75 @@
+/* Страница источников — светлая тема (как главная) */
+
+.sources-page {
+  --src-mono: var(--font-jetbrains-mono, ui-monospace, monospace);
+  --src-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --src-body: var(--font-pt-serif), "PT Serif", Georgia, serif;
+  --src-ink: #2c3e50;
+  --src-ink-soft: #5a6c7d;
+  --src-paper: #faf8f3;
+  --src-card: #fdfbf7;
+  --src-border: #d4cfc0;
+  --src-gold: #b8860b;
+  --src-navy: #1b365d;
+  --src-sepia: #8b7355;
+
+  min-height: 100vh;
+  color: var(--src-ink);
+  font-family: var(--src-body);
+  background-color: var(--src-paper);
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+.sources-page *,
+.sources-page *::before,
+.sources-page *::after {
+  border-radius: 0 !important;
+}
+
+.sources-tag {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--src-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--src-sepia);
+}
+
+.sources-terminal {
+  font-family: var(--src-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+}
+
+.sources-title {
+  font-family: var(--src-serif);
+}
+
+.sources-prose {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--src-ink);
+}
+
+.sources-entry {
+  border: 1px solid var(--src-border);
+  background: var(--src-card);
+  transition: border-color 0.2s ease;
+}
+
+.sources-entry:hover {
+  border-color: var(--src-gold);
+}
+
+.sources-entry a {
+  color: var(--src-navy);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.sources-entry a:hover {
+  color: var(--src-gold);
+}

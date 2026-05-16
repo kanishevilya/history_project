@@ -78,6 +78,18 @@ export default function HomeGISDashboard() {
                 </Link>
               ))}
             </div>
+
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <Link
+                href="/sources"
+                className="home-gis-terminal inline-flex items-center gap-2 border-2 border-[#1B365D] bg-[#FDFBF7] px-5 py-3 uppercase text-[#1B365D] no-underline transition-colors hover:border-[#B8860B] hover:bg-[#FFFCF8] hover:text-[#B8860B]"
+              >
+                Источники и материалы →
+              </Link>
+              <p className="home-gis-terminal max-w-md text-[10px] normal-case leading-relaxed text-[#5A6C7D]">
+                Архивы, литература, карты и сноски к текстам глав
+              </p>
+            </div>
           </div>
         </div>
       </header>
