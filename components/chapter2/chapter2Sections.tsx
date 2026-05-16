@@ -181,7 +181,7 @@ export function IntroSection() {
     <section className={CH2_SECTION}>
       <div className="mx-auto max-w-3xl">
         <Link
-          href="/"
+          href="/chapter-1"
           className="ch2-link mb-8 inline-block font-mono text-xs uppercase tracking-widest"
         >
           ← Глава I
