@@ -19,6 +19,7 @@ import {
   ConclusionSection,
 } from "@/components/chapter5/chapter5Sections";
 import "@/app/chapter-5/digital.css";
+import { HomeLinkButton } from "@/components/chapter/HomeLinkButton";
 
 const EASE: [number, number, number, number] = [0.43, 0.13, 0.23, 0.96];
 
@@ -40,7 +41,9 @@ function Ch5BackToTop() {
           exit={{ opacity: 0, y: 12 }}
           transition={{ duration: 0.3, ease: EASE }}
           onClick={() =>
-            document.getElementById("ch5-top")?.scrollIntoView({ behavior: "smooth" })
+            document
+              .getElementById("ch5-top")
+              ?.scrollIntoView({ behavior: "smooth" })
           }
           className="ch5-meta fixed bottom-6 right-5 z-[9999] border border-[#0f172a] bg-white px-3 py-2 text-[#0f172a] hover:border-[#00e5ff] hover:text-[#00e5ff]"
           aria-label="К началу главы"
@@ -63,6 +66,7 @@ export default function ChapterFiveView() {
 
   return (
     <main className="ch5-root ch5-light min-h-screen bg-white">
+      <HomeLinkButton className="border border-[#0f172a] bg-white text-[#0f172a] hover:border-[#0284c7] hover:text-[#0284c7] focus-visible:outline-[#0284c7]" />
       <Ch5BackToTop />
 
       <section
@@ -95,17 +99,19 @@ export default function ChapterFiveView() {
           style={{ opacity: heroOpacity }}
           className="relative z-10 flex h-full flex-col justify-end pl-12 pr-6 pb-14 md:pr-12 md:pb-20"
         >
-          <p className="ch5-meta text-[#0f172a]/70">
+          <p className="ch5-meta text-white">
             Глава {CHAPTER5_META.number} · {CHAPTER5_META.heroYear}
           </p>
           <h1 className="ch5-hero-title mt-5 max-w-5xl text-[#0f172a]">
             {CHAPTER5_META.titleLine1}
-            <span className="mt-2 block text-[#00e5ff]">{CHAPTER5_META.titleAccent}</span>
-            <span className="ch5-hero-sub mt-3 block text-[#0f172a]/85">
+            <span className="mt-2 block text-[#00e5ff]">
+              {CHAPTER5_META.titleAccent}
+            </span>
+            <span className="ch5-hero-sub mt-3 block text-white">
               {CHAPTER5_META.titleLine2}
             </span>
           </h1>
-          <p className="ch5-meta mt-8 text-[#0f172a]/55">{CHAPTER5_META.subtitle}</p>
+          <p className="ch5-meta mt-8 text-white">{CHAPTER5_META.subtitle}</p>
         </motion.div>
       </section>
 

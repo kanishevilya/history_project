@@ -6,7 +6,7 @@ export function EgsMapSection({ src, caption }: { src: string; caption: string }
   return (
     <div className="-mx-4 mt-12 md:-mx-8 lg:-mr-12">
       <p className="ch4-meta mb-3 px-0">ЕГС · навигационный транзит</p>
-      <div className="relative aspect-[16/9] w-full overflow-hidden border-y-2 border-black bg-[#0a1628]">
+      <div className="relative mx-auto aspect-[16/9] w-full max-w-[70%] overflow-hidden border-y-2 border-black bg-[#0a1628]">
         <Image
           src={src}
           alt="Карта Единой глубоководной системы"

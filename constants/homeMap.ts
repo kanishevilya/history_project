@@ -32,7 +32,7 @@ export interface EraConfig {
 export const HOME_ERA_CONFIG: EraConfig[] = [
   {
     id: "1725",
-    label: "1725",
+    label: "Начало XVIII века",
     chapter: 1,
     mapSrc: "/assets/home/ПЛАН СПБ 1725.jpg",
     mapAlt: "Генеральный план Санкт-Петербурга, начало XVIII века",
@@ -41,7 +41,7 @@ export const HOME_ERA_CONFIG: EraConfig[] = [
         id: "lebyazhy",
         name: "Лебяжий канал",
         leftPct: 58,
-        topPct: 38,
+        topPct: 42,
         period: "1711–1719",
         technicalImpact:
           "Ранний гидроузел дворцового анклава — осушение низменных участков, связь акваторий Летнего сада и Невы.",
@@ -51,8 +51,8 @@ export const HOME_ERA_CONFIG: EraConfig[] = [
       {
         id: "krasny",
         name: "Красный канал",
-        leftPct: 44,
-        topPct: 52,
+        leftPct: 62,
+        topPct: 48,
         period: "1720–е",
         technicalImpact:
           "Фрагмент защитно-сливной системы Адмиралтейской верфи: отвод воды со стапелей и промышленных площадок.",
@@ -73,8 +73,8 @@ export const HOME_ERA_CONFIG: EraConfig[] = [
       {
         id: "line_ship",
         name: "Линейный парусный корабль",
-        leftPct: 62,
-        topPct: 62,
+        leftPct: 52,
+        topPct: 54,
         period: "1700–1790-е",
         technicalImpact:
           "Корабли «линии баталии» — основа Балтийского флота эпохи Петра I; стандартизация артиллерии и корпуса для линкоров Адмиралтейства.",
@@ -85,7 +85,7 @@ export const HOME_ERA_CONFIG: EraConfig[] = [
   },
   {
     id: "1868",
-    label: "1868",
+    label: "XIX век",
     chapter: 2,
     mapSrc: "/assets/home/ПЛАН СПБ 1868.jpg",
     mapAlt: "План Санкт-Петербурга, вторая половина XIX века",
@@ -93,8 +93,8 @@ export const HOME_ERA_CONFIG: EraConfig[] = [
       {
         id: "elizaveta",
         name: "Пароход «Елизавета»",
-        leftPct: 48,
-        topPct: 58,
+        leftPct: 73,
+        topPct: 40,
         period: "1850–1880-е",
         technicalImpact:
           "Символ паровой эпохи на Неве: регулярные пассажирские и грузовые рейсы, предтеча пригородного флота.",
@@ -104,7 +104,7 @@ export const HOME_ERA_CONFIG: EraConfig[] = [
       {
         id: "baltic_plant",
         name: "Балтийский завод",
-        leftPct: 42,
+        leftPct: 25,
         topPct: 68,
         period: "1856–",
         technicalImpact:
@@ -115,8 +115,8 @@ export const HOME_ERA_CONFIG: EraConfig[] = [
       {
         id: "marine_canal",
         name: "Петербургский Морской канал",
-        leftPct: 55,
-        topPct: 72,
+        leftPct: 28,
+        topPct: 87,
         period: "1874–1885",
         technicalImpact:
           "Связь центра города с финским заливом для крупнотоннажных судов — логистический разрез промышленного Петербурга.",
@@ -126,8 +126,8 @@ export const HOME_ERA_CONFIG: EraConfig[] = [
       {
         id: "dry_docks",
         name: "Сухие доки",
-        leftPct: 38,
-        topPct: 65,
+        leftPct: 12,
+        topPct: 55,
         period: "XIX век",
         technicalImpact:
           "Инфраструктура ремонта и строительства корпусов без затопления стапеля — ускорение оборота флота.",
@@ -138,7 +138,7 @@ export const HOME_ERA_CONFIG: EraConfig[] = [
   },
   {
     id: "1929",
-    label: "1929",
+    label: "XX век · I пол.",
     chapter: 3,
     mapSrc: "/assets/home/ПЛАН СПБ 1929.jpg",
     mapAlt: "Схема акваторий и коммуникаций (межвоенный период)",
@@ -167,9 +167,9 @@ export const HOME_ERA_CONFIG: EraConfig[] = [
       },
       {
         id: "tovarishch",
-        name: "Барк «Товарищ»",
-        leftPct: 40,
-        topPct: 52,
+        name: "Угольная гавань",
+        leftPct: 17,
+        topPct: 94,
         period: "1922–",
         technicalImpact:
           "Символ восстановления гражданского мореплавания РСФСР; рейсы «Балтморфлота» и закрепление кодекса смешанного плавания.",
@@ -178,9 +178,9 @@ export const HOME_ERA_CONFIG: EraConfig[] = [
       },
       {
         id: "kronshtadt",
-        name: "Кронштадтский рейд",
-        leftPct: 28,
-        topPct: 78,
+        name: "Морской порт",
+        leftPct: 22,
+        topPct: 87,
         period: "1704–XX в.",
         technicalImpact:
           "Внешний рейд и крепость — прикрытие дорог на Финский залив, база Балтийского флота и якорная стоянка конвоирующего флота.",
@@ -191,7 +191,7 @@ export const HOME_ERA_CONFIG: EraConfig[] = [
   },
   {
     id: "1939",
-    label: "1939",
+    label: "XX век · II пол.",
     chapter: 4,
     mapSrc: "/assets/home/ПЛАН СПБ 1939.jpg",
     mapAlt: "Транспортная сеть и глубоководная система",
@@ -252,8 +252,8 @@ export const HOME_ERA_CONFIG: EraConfig[] = [
       {
         id: "marine_facade_port",
         name: "Пассажирский порт «Морской фасад»",
-        leftPct: 42,
-        topPct: 62,
+        leftPct: 7,
+        topPct: 66,
         period: "2005–2011",
         technicalImpact:
           "Круизный хаб на намыве: дноуглубление 10,7 м, причальный фронт >2 км, единая зона погранконтроля.",

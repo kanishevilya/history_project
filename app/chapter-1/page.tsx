@@ -31,10 +31,10 @@ import {
   CONCLUSION,
 } from "@/constants/chapter1";
 import type { MuseumFigureId } from "@/constants/chapterReading";
+import { HomeLinkButton } from "@/components/chapter/HomeLinkButton";
 import {
   BackToTopButton,
   ChapterReadingProvider,
-  DecadeTimelineBar,
   EraSection,
   FigureCaption,
   GlossaryTerm,
@@ -587,7 +587,7 @@ export default function ChapterOnePage() {
   return (
     <ChapterReadingProvider>
       <main className="paper-texture min-h-screen">
-        <DecadeTimelineBar />
+        <HomeLinkButton className="border-[#262626] bg-[#FAF8F3] text-[#262626] hover:border-[#B8860B] hover:text-[#B8860B] focus-visible:outline-[#B8860B]" />
         <BackToTopButton />
         {/* ========================================
           HERO SECTION - Fades to texture

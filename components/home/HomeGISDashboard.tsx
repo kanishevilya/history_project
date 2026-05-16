@@ -34,7 +34,9 @@ export default function HomeGISDashboard() {
       <header className="border-b border-[#D4CFC0]">
         <div className="grid min-h-[auto] grid-cols-[3rem_1fr] pl-12 md:grid-cols-[3.5rem_1fr]">
           <aside className="home-gis-gutter flex justify-center py-8">
-            <span className="home-gis-tag sticky top-24 text-[11px]">[ГЛАВНЫЙ УЗЕЛ ПОРТА]</span>
+            <span className="home-gis-tag sticky top-24 text-[11px]">
+              [ГЛАВНЫЙ УЗЕЛ ПОРТА]
+            </span>
           </aside>
           <div className="home-gis-manifest pr-4 pb-10 pt-10 md:pr-12 lg:pr-16">
             <p className="home-gis-terminal mb-4 uppercase text-[#8B7355]">
@@ -44,7 +46,8 @@ export default function HomeGISDashboard() {
               Основание Санкт-Петербурга изменило историю страны
             </h1>
             <p className="home-gis-prose home-gis-prose--lead mt-8 max-w-3xl text-lg md:text-xl">
-              Новый город стал портом, верфью и морскими воротами России в Европу.
+              Новый город стал портом, верфью и морскими воротами России в
+              Европу.
             </p>
 
             <div className="chapter-rule mx-0 mb-12 mt-10 max-w-md" />
@@ -63,7 +66,9 @@ export default function HomeGISDashboard() {
                       [Приоритетный маршрут]
                     </p>
                   )}
-                  <p className="home-gis-terminal text-[10px] uppercase text-[#5A6C7D]">{ch.tech}</p>
+                  <p className="home-gis-terminal text-[10px] uppercase text-[#5A6C7D]">
+                    {ch.tech}
+                  </p>
                   <p className="mt-3 font-serif text-base font-black uppercase tracking-tight text-[#1B365D] group-hover:text-[#B8860B] md:text-lg">
                     {ch.title}
                   </p>
@@ -80,7 +85,9 @@ export default function HomeGISDashboard() {
       <section className="border-b border-[#D4CFC0] py-12 md:py-16">
         <div className="grid grid-cols-[3rem_1fr] pl-12 md:grid-cols-[3.5rem_1fr]">
           <aside className="home-gis-gutter flex justify-center py-4">
-            <span className="home-gis-tag sticky top-24 opacity-90">[СЛОЙ КАРТЫ]</span>
+            <span className="home-gis-tag sticky top-24 opacity-90">
+              [СЛОЙ КАРТЫ]
+            </span>
           </aside>
           <div className="min-w-0 pr-4 md:pr-8 lg:pr-14">
             <div className="mb-12 max-w-4xl space-y-5">
@@ -91,7 +98,8 @@ export default function HomeGISDashboard() {
                   <p
                     key={`l-${i}`}
                     className={
-                      line.startsWith(`Основание`) || line.startsWith(`Эта карта`)
+                      line.startsWith(`Основание`) ||
+                      line.startsWith(`Эта карта`)
                         ? "home-gis-prose text-lg font-medium text-[#1B365D]"
                         : "home-gis-prose"
                     }
@@ -102,7 +110,9 @@ export default function HomeGISDashboard() {
               )}
             </div>
 
-            <p className="home-gis-terminal uppercase text-[#8B7355]">Интерактивная хронология</p>
+            <p className="home-gis-terminal uppercase text-[#8B7355]">
+              Интерактивная хронология
+            </p>
 
             <div className="mt-4 flex flex-wrap gap-0 border border-[#D4CFC0] bg-[#FDFBF7] md:inline-flex md:flex-nowrap">
               {HOME_ERA_CONFIG.map((e) => (
@@ -133,7 +143,7 @@ export default function HomeGISDashboard() {
                       className="absolute inset-0"
                       initial={false}
                       animate={{ opacity: eraId === layer.id ? 1 : 0 }}
-                      transition={{ duration: 0.3, ease: EASE }}
+                      transition={{ duration: 0.75, ease: "easeInOut" }}
                     >
                       <Image
                         src={layer.mapSrc}
@@ -161,13 +171,18 @@ export default function HomeGISDashboard() {
                       type="button"
                       onClick={() => setSelected(node)}
                       className="absolute z-10 -translate-x-1/2 -translate-y-1/2 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#B8860B] focus-visible:outline-offset-2"
-                      style={{ left: `${node.leftPct}%`, top: `${node.topPct}%` }}
+                      style={{
+                        left: `${node.leftPct}%`,
+                        top: `${node.topPct}%`,
+                      }}
                       aria-label={node.name}
                       title={node.name}
                     >
                       <span
                         className={`home-gis-pin-wrap relative ${
-                          selected?.id === node.id ? "home-gis-pin-wrap--selected" : ""
+                          selected?.id === node.id
+                            ? "home-gis-pin-wrap--selected"
+                            : ""
                         }`}
                       >
                         <span className="home-gis-pin-core" />
@@ -215,15 +230,6 @@ export default function HomeGISDashboard() {
                         <h2 className="home-gis-title text-lg font-bold uppercase leading-tight tracking-tight text-[#1B365D]">
                           {selected.name}
                         </h2>
-                        <div className="relative mt-4 aspect-[4/3] w-full overflow-hidden border-2 border-[#D4CFC0]">
-                          <Image
-                            src={selected.imageSrc}
-                            alt={selected.imageAlt}
-                            fill
-                            className="object-cover object-center sepia-[.15]"
-                            sizes="360px"
-                          />
-                        </div>
                         <p className="home-gis-terminal mt-4 uppercase text-[#B8860B]">
                           Период: {selected.period}
                         </p>

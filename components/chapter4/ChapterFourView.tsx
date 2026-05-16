@@ -19,6 +19,7 @@ import {
   ConclusionSection,
 } from "@/components/chapter4/chapter4Sections";
 import "@/app/chapter-4/gosplan.css";
+import { HomeLinkButton } from "@/components/chapter/HomeLinkButton";
 
 const EASE: [number, number, number, number] = [0.43, 0.13, 0.23, 0.96];
 
@@ -63,6 +64,7 @@ export default function ChapterFourView() {
 
   return (
     <main className="ch4-root ch4-paper min-h-screen">
+      <HomeLinkButton className="border-2 border-black bg-[#eceff1] text-[#141414] hover:border-[#0284c7] hover:text-[#0284c7] focus-visible:outline-[#0284c7]" />
       <Ch4BackToTop />
 
       <section

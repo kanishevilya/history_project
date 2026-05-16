@@ -23,6 +23,7 @@ import {
   ConclusionSection,
 } from "@/components/chapter3/chapter3Sections";
 import "@/app/chapter-3/constructivist.css";
+import { HomeLinkButton } from "@/components/chapter/HomeLinkButton";
 
 const EASE: [number, number, number, number] = [0.43, 0.13, 0.23, 0.96];
 
@@ -69,6 +70,7 @@ export default function ChapterThreeView() {
 
   return (
     <main className="ch3-root ch3-paper min-h-screen">
+      <HomeLinkButton className="border-2 border-[#262626] bg-[#ebe9e4] text-[#262626] hover:border-[#b71c1c] hover:text-[#b71c1c] focus-visible:outline-[#b71c1c]" />
       <Ch3BackToTop />
 
       <section

@@ -17,7 +17,7 @@ import {
   CH3_IMAGES,
 } from "@/constants/chapter3";
 import { RevealWords } from "@/components/chapter/ChapterWordReveal";
-import { RoadOfLifeScroll } from "@/components/chapter3/RoadOfLifeScroll";
+import { RoadOfLifeSection } from "@/components/chapter3/RoadOfLifeSection";
 
 const SECTION = "px-6 py-14 md:px-10";
 
@@ -219,9 +219,7 @@ export function EvacuationSection() {
   );
 }
 
-export function RoadOfLifeSection() {
-  return <RoadOfLifeScroll />;
-}
+export { RoadOfLifeSection };
 
 export function PipelineSection() {
   return (

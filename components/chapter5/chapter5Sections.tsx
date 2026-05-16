@@ -61,7 +61,7 @@ export function MarineFacadeSection() {
       </motion.header>
 
       <motion.div
-        className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_280px]"
+        className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_540px]"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6, ease: EASE }}
@@ -69,17 +69,25 @@ export function MarineFacadeSection() {
       >
         <div className="space-y-8 lg:col-span-1">
           {d.intro.slice(0, 2).map((p) => (
-            <RevealWords key={p.slice(0, 40)} text={p} className="ch5-body max-w-none" />
+            <RevealWords
+              key={p.slice(0, 40)}
+              text={p}
+              className="ch5-body max-w-none"
+            />
           ))}
         </div>
-        <figure className="ch5-plate relative aspect-[4/5] w-full max-w-[280px] lg:ml-auto">
-          <Image
-            src={CH5_IMAGES.oldTerminal}
-            alt="Устаревший Морской вокзал"
-            fill
-            className="object-cover object-center grayscale contrast-125"
-            sizes="280px"
-          />
+        <figure className="ch5-plate w-full max-w-[540px] lg:ml-auto">
+          <div className="relative aspect-[5/4] w-full">
+            <Image
+              src={CH5_IMAGES.oldTerminal}
+              alt="Устаревший Морской вокзал"
+              fill
+              className="object-cover object-center grayscale contrast-125"
+              sizes="480px"
+            />
+          </div>
+
+          {/* 3. Текст спокойно встает снизу и не зависит от высоты картинки */}
           <figcaption className="ch5-meta mt-3 border-l-2 border-[#0f172a] pl-3">
             Архив · устаревший вокзал
           </figcaption>
@@ -103,7 +111,11 @@ export function MarineFacadeSection() {
           />
         </div>
         <div className="p-4 lg:p-5">
-          <CadSpecTable title={d.cadTitle} subtitle={d.cadSubtitle} rows={d.cadRows} />
+          <CadSpecTable
+            title={d.cadTitle}
+            subtitle={d.cadSubtitle}
+            rows={d.cadRows}
+          />
         </div>
       </div>
     </Chapter5Section>
@@ -118,7 +130,11 @@ export function ReclamationSection() {
       <h2 className="ch5-title-sm mt-3">Намыв Васильевского острова</h2>
       <div className="mt-10 max-w-3xl space-y-8">
         {d.paragraphs.map((p) => (
-          <RevealWords key={p.slice(0, 40)} text={p} className="ch5-body max-w-none" />
+          <RevealWords
+            key={p.slice(0, 40)}
+            text={p}
+            className="ch5-body max-w-none"
+          />
         ))}
       </div>
       <BlueprintCallouts
@@ -139,7 +155,11 @@ export function LogisticsSection() {
       <p className="ch5-meta mt-3 text-[#00e5ff]">FESCO · Baltorient Line</p>
       <div className="mt-10 max-w-3xl space-y-8">
         {d.paragraphs.map((p) => (
-          <RevealWords key={p.slice(0, 40)} text={p} className="ch5-body max-w-none" />
+          <RevealWords
+            key={p.slice(0, 40)}
+            text={p}
+            className="ch5-body max-w-none"
+          />
         ))}
       </div>
       <LiveTracker
@@ -177,11 +197,17 @@ export function TransitSection() {
       <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_220px]">
         <div className="space-y-8">
           {d.paragraphs.map((p) => (
-            <RevealWords key={p.slice(0, 40)} text={p} className="ch5-body max-w-none" />
+            <RevealWords
+              key={p.slice(0, 40)}
+              text={p}
+              className="ch5-body max-w-none"
+            />
           ))}
         </div>
         <div className="ch5-dispatch lg:sticky lg:top-24 lg:self-start">
-          <p className="ch5-meta text-[#00e5ff]">DISPATCH_LOG · {d.dispatcher.period}</p>
+          <p className="ch5-meta text-[#00e5ff]">
+            DISPATCH_LOG · {d.dispatcher.period}
+          </p>
           <div className="mt-6 grid grid-cols-2 gap-6">
             <div>
               <p className="ch5-dispatch-value">{d.dispatcher.openings}</p>
@@ -207,7 +233,11 @@ export function MeteorSection() {
       <p className="ch5-meta mt-3">Метеор-120Р · подводные крылья</p>
       <div className="mt-10 max-w-3xl space-y-8">
         {d.paragraphs.map((p) => (
-          <RevealWords key={p.slice(0, 40)} text={p} className="ch5-body max-w-none" />
+          <RevealWords
+            key={p.slice(0, 40)}
+            text={p}
+            className="ch5-body max-w-none"
+          />
         ))}
       </div>
       <div className="mt-12">
@@ -228,9 +258,15 @@ export function ConclusionSection() {
   const prev = CHAPTER5_CONCLUSION.prevChapter;
   const d = CH5_CONCLUSION;
   return (
-    <Chapter5Section gutter={d.gutter} zone="arctic" className="ch5-grid-bg !bg-[#0f172a] pb-0">
+    <Chapter5Section
+      gutter={d.gutter}
+      zone="arctic"
+      className="ch5-grid-bg !bg-[#0f172a] pb-0"
+    >
       <p className="ch5-meta text-[#00e5ff]">Секция 06 · горизонт СМП</p>
-      <h2 className="ch5-title mt-4 text-white md:text-5xl">Заключение и будущее</h2>
+      <h2 className="ch5-title mt-4 text-white md:text-5xl">
+        Заключение и будущее
+      </h2>
 
       <div className="mt-12 max-w-4xl space-y-8">
         {d.summary.map((p) => (
@@ -243,7 +279,9 @@ export function ConclusionSection() {
       </div>
 
       <div className="mt-14 border-t border-[#00e5ff]/30 pt-12">
-        <p className="ch5-meta text-[#00e5ff]/70">Перспективы · СМП · цифровизация</p>
+        <p className="ch5-meta text-[#00e5ff]/70">
+          Перспективы · СМП · цифровизация
+        </p>
         <div className="mt-8 space-y-8">
           {d.future.map((p, i) => (
             <RevealWords

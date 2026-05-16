@@ -17,6 +17,7 @@ import {
   FooterSection,
 } from "@/components/chapter2/chapter2Sections";
 import "@/app/chapter-2/editorial.css";
+import { HomeLinkButton } from "@/components/chapter/HomeLinkButton";
 
 const EASE: [number, number, number, number] = [0.43, 0.13, 0.23, 0.96];
 
@@ -73,6 +74,7 @@ export default function ChapterTwoView() {
 
   return (
     <main className="ch2-root ch2-paper-texture min-h-screen">
+      <HomeLinkButton className="border-[#1B262C] bg-[#ebe9e4] text-[#1B262C] hover:border-[#0F4C75] hover:text-[#0F4C75] focus-visible:outline-[#0F4C75]" />
       <EditorialBackToTop />
 
       <section

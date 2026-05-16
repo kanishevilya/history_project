@@ -143,13 +143,13 @@ export function ContainerEraSection() {
               ))}
             </div>
           </div>
-          <div className="ch4-corrugated relative min-h-[280px] lg:min-h-full">
+          <div className="ch4-corrugated relative aspect-[21/9] min-h-[300px] w-full md:aspect-[2.4/1] md:min-h-[360px]">
             <Image
               src={CH4_IMAGES.containerTerminal}
               alt="Контейнерный терминал на Турухтанных островах"
               fill
               className="object-cover object-center"
-              sizes="300px"
+              sizes="(max-width: 768px) 100vw, 900px"
             />
           </div>
         </div>
